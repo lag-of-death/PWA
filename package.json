@@ -5,7 +5,8 @@
   "main": "notifications/simple_1/sw.js",
   "scripts": {
     "notifications1": "http-server ./notifications/simple_1",
-    "notifications2": "http-server ./notifications/simple_2"
+    "notifications2": "http-server ./notifications/simple_2",
+    "cache1": "http-server ./cache/simple_1"
   },
   "keywords": [],
   "author": "",
