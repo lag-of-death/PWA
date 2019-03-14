@@ -1,0 +1,10 @@
+<!doctype html>
+<html lang="pl">
+<body>
+<script>
+  Notification.requestPermission(async () => {
+    await navigator.serviceWorker.register('sw.js', {});
+  });
+</script>
+</body>
+</html>

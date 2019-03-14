@@ -2,9 +2,10 @@
   "name": "pwa",
   "version": "1.0.0",
   "description": "",
-  "main": "notifications/sw.js",
+  "main": "notifications/simple_1/sw.js",
   "scripts": {
-    "notifications": "http-server ./notifications"
+    "notifications1": "http-server ./notifications/simple_1",
+    "notifications2": "http-server ./notifications/simple_2"
   },
   "keywords": [],
   "author": "",
