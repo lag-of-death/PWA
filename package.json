@@ -6,12 +6,18 @@
   "scripts": {
     "notifications1": "http-server ./notifications/simple_1",
     "notifications2": "http-server ./notifications/simple_2",
-    "cache1": "http-server ./cache/simple_1"
+    "cache1": "http-server ./cache/simple_1",
+    "push1": "node push/index.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "http-server": "^0.11.1"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "web-push": "^3.3.3"
   }
 }
