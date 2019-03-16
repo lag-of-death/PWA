@@ -1,20 +1,20 @@
-const createSubscription = async (serviceWorkerRegistration) => {
-  const resp = await fetch('/public-key');
-  const publicKey = await resp.text();
+(async ({ urlBase64ToUint8Array }) => {
+  const createSubscription = async (serviceWorkerRegistration) => {
+    const resp = await fetch('/public-key');
+    const publicKey = await resp.text();
 
-  return serviceWorkerRegistration.pushManager.subscribe({
-    userVisibleOnly: true,
-    applicationServerKey: urlBase64ToUint8Array(publicKey)
-  });
-};
+    return serviceWorkerRegistration.pushManager.subscribe({
+      userVisibleOnly: true,
+      applicationServerKey: urlBase64ToUint8Array(publicKey),
+    });
+  };
 
-const getSubscription = async (serviceWorkerRegistration) => {
-  const subscription = await serviceWorkerRegistration.pushManager.getSubscription();
+  const getSubscription = async (serviceWorkerRegistration) => {
+    const subscription = await serviceWorkerRegistration.pushManager.getSubscription();
 
-  return subscription ? subscription : createSubscription(serviceWorkerRegistration);
-};
+    return subscription || createSubscription(serviceWorkerRegistration);
+  };
 
-(async () => {
   navigator.serviceWorker.register('push-sw.js');
 
   const serviceWorkerRegistration = await navigator.serviceWorker.ready;
@@ -23,10 +23,10 @@ const getSubscription = async (serviceWorkerRegistration) => {
   fetch('./send-notif', {
     method: 'post',
     headers: {
-      'Content-type': 'application/json'
+      'Content-type': 'application/json',
     },
     body: JSON.stringify({
-      subscription: subscription,
+      subscription,
     }),
   });
-})();
+})(this.window);

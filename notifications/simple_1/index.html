@@ -1,12 +1,6 @@
 <!doctype html>
 <html lang="pl">
 <body>
-<script>
-  Notification.requestPermission(async () => {
-    const worker = await navigator.serviceWorker.register('sw.js', {});
-
-    worker.showNotification('hello!');
-  });
-</script>
+<script src="app.js"></script>
 </body>
 </html>

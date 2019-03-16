@@ -8,14 +8,14 @@ const { publicKey, privateKey } = webPush.generateVAPIDKeys();
 webPush.setVapidDetails(
   'localhost:8080',
   publicKey,
-  privateKey
+  privateKey,
 );
 
 app.use(bodyParser.json());
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(`${__dirname}/public`));
 
 app.get('/public-key', (req, res) => {
-  res.send(publicKey)
+  res.send(publicKey);
 });
 
 app.post('/send-notif', (req, res) => {
